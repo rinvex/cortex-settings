@@ -1,0 +1,61 @@
+/* @TODO: remove purgecss comment & make sure it's still work */
+/* purgecss start ignore */
+
+.bg-dimgray {
+    background-color: dimgray !important;
+    color: white !important;
+}
+
+.border-bottom-none {
+    border-bottom: none !important;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.padding-y {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.input-group-multi {
+    [class*='col-'] {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .form-control {
+        border-right: 0;
+    }
+
+    [class*='col-']:last-child .form-control {
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid #ccc;
+    }
+
+    .input-group-addon {
+        background-color: #d6d6d6;
+    }
+
+    .option-delete-btn {
+        background-color: #d9534f !important;
+        color: white !important;
+    }
+}
+
+/* Select2 Customization: always open */
+.select2-container--default .select2-results > .select2-results__options {
+    height: 300px;
+    max-height: 300px;
+}
+
+.select2-selection__arrow {
+    display: none;
+}
+
+/* purgecss end ignore */
