@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Settings\Imports;
 
 use Illuminate\Support\Arr;
@@ -12,7 +14,7 @@ class SettingsRestoreImport implements ToModel, WithHeadingRow
     {
         $setting = app('rinvex.settings.setting')->where('key', Arr::get($row, 'key'))->first();
 
-        if (!$setting) {
+        if (! $setting) {
             return null;
         }
 

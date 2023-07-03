@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Settings\Exports;
 
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -20,8 +22,9 @@ class SettingsExport implements FromCollection, WithHeadings
     {
         return app('rinvex.settings.setting')
             ->get($this->fields)
-            ->map( function ($st) {
-                $st->options = !empty($st->options)?json_encode($st->options):null;
+            ->map(function ($st) {
+                $st->options = ! empty($st->options) ? json_encode($st->options) : null;
+
                 return $st;
             })
             ->makeHidden(['group']);
