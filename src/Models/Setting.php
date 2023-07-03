@@ -6,9 +6,9 @@ namespace Cortex\Settings\Models;
 
 use Spatie\Activitylog\LogOptions;
 use Rinvex\Support\Traits\Macroable;
+use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
-use Cortex\Foundation\Traits\Auditable;
 use Cortex\Settings\Events\SettingCreated;
 use Cortex\Settings\Events\SettingDeleted;
 use Cortex\Settings\Events\SettingUpdated;
