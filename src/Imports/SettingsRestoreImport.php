@@ -3,7 +3,6 @@
 namespace Cortex\Settings\Imports;
 
 use Illuminate\Support\Arr;
-use Cortex\Settings\Models\Setting;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
