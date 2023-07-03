@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Settings\Exports;
 
 use Maatwebsite\Excel\Concerns\WithHeadings;

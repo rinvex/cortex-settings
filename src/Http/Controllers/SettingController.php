@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Cortex\Settings\Http\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use Cortex\Settings\Models\Setting;
+use Maatwebsite\Excel\Facades\Excel;
 use Cortex\Foundation\Http\FormRequest;
 use Cortex\Settings\Exports\SettingsExport;
 use Cortex\Foundation\Importers\UpsertImporter;
@@ -27,7 +27,7 @@ class SettingController extends AuthorizedController
         $SelectedGroupKey = $request->route('group_key');
         if (! empty($SelectedGroupKey)) {
             $selected_type = app('rinvex.settings.setting')->when($request->route('group_key') !== 'all', function ($query) use ($SelectedGroupKey) {
-                $query->where('key', 'LIKE', $SelectedGroupKey."%");
+                $query->where('key', 'LIKE', $SelectedGroupKey.'%');
             })->get()->groupBy('group');
         } else {
             $selected_type = $settings;
@@ -49,26 +49,26 @@ class SettingController extends AuthorizedController
         $expended_groups = Arr::prepend($map_group, ['id' => 'all', 'text' => trans('cortex/settings::common.show_all_settings')]);
 
         return view('cortex/settings::adminarea.settings.index')->with([
-                'groups' => $groups,
-                'expended_groups' => $expended_groups,
-                'pusher' => ['entity' => 'setting', 'channel' => 'cortex.settings.settings.index'],
-                'selected_type' => $selected_type,
-            ]);
+            'groups' => $groups,
+            'expended_groups' => $expended_groups,
+            'pusher' => ['entity' => 'setting', 'channel' => 'cortex.settings.settings.index'],
+            'selected_type' => $selected_type,
+        ]);
     }
 
     public function export()
     {
-        return Excel::download(new SettingsExport, 'settings-'.now()->timestamp.'.xlsx');
+        return Excel::download(new SettingsExport(), 'settings-'.now()->timestamp.'.xlsx');
     }
 
     public function downloadSettingsBackup()
     {
-        return Excel::download(new SettingsBackupExport, 'settings-backup-'.now()->timestamp.'.xlsx');
+        return Excel::download(new SettingsBackupExport(), 'settings-backup-'.now()->timestamp.'.xlsx');
     }
 
     public function restoreSettings(Request $request)
     {
-        Excel::import(new SettingsRestoreImport, $request->file('file'));
+        Excel::import(new SettingsRestoreImport(), $request->file('file'));
 
         return intend([
             'url' => route('adminarea.cortex.settings.settings.index'),
@@ -146,7 +146,7 @@ class SettingController extends AuthorizedController
         if (in_array($request->get('key'), ['value', 'override_config'])) {
             $value = $request->get('value');
 
-            if ($setting->type == 'checkbox' && is_array($value)) {
+            if ($setting->type === 'checkbox' && is_array($value)) {
                 $value = json_encode($value);
             }
 

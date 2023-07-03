@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Settings\Http\Components\Adminarea;
 
 use Illuminate\Support\Arr;
@@ -34,8 +36,7 @@ class SettingResourceDropdown extends Component
         if ($field = $this->getField()) {
             $data = $this->model->get()->pluck($field, 'id');
             $selectedValue = json_decode($this->setting->value);
-        }
-        else {
+        } else {
             $data = null;
             $selectedValue = $this->setting->value;
         }
@@ -54,6 +55,7 @@ class SettingResourceDropdown extends Component
                 }
             }
         }
+
         return null;
     }
 }
