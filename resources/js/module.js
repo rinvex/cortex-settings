@@ -1,4 +1,3 @@
-window.swal2 = require('sweetalert2');
 window.addEventListener('turbolinks:load', function() {
     let isExpended = 0;
     function initSettings(data) {
@@ -59,16 +58,11 @@ window.addEventListener('turbolinks:load', function() {
     })
 
     function unsavedPopup(location) {
-        swal2.fire({
-            title: Lang.get('cortex/settings::common.changes_you_made_not_saved'),
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: Lang.get('cortex/settings::common.continue'),
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = location;
-            }
-        })
+        var result = confirm(Lang.get('cortex/settings::common.changes_you_made_not_saved'));
+
+        if (result) {
+            window.location.href = location;
+        }
     }
 
     $(document).on('click', '#go-setting-group', function () {
