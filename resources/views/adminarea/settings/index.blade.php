@@ -223,10 +223,6 @@
         </section>
     </div>
 @endsection
-@push('head-elements')
-    <meta name="turbolinks-cache-control" content="no-cache">
-@endpush
-
 @push('inline-scripts')
     <script src="{{ mix('js/settings.js') }}" defer></script>
     <script>

@@ -1,4 +1,3 @@
-window.addEventListener('turbolinks:load', function() {
     let isExpended = 0;
     function initSettings(data) {
         $('#setting-select2').select2({
@@ -150,4 +149,3 @@ window.addEventListener('turbolinks:load', function() {
                 `
         parentEl.append(content);
     }
-});
