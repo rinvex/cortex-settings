@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cortex\Settings\Http\Requests;
 
 use Rinvex\Support\Traits\Escaper;
