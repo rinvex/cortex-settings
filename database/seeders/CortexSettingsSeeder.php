@@ -17,6 +17,7 @@ class CortexSettingsSeeder extends Seeder
     {
         $abilities = [
             ['name' => 'list', 'title' => 'List settings', 'entity_type' => 'setting'],
+            ['name' => 'view', 'title' => 'View settings', 'entity_type' => 'setting'],
             ['name' => 'import', 'title' => 'Import settings', 'entity_type' => 'setting'],
             ['name' => 'export', 'title' => 'Export settings', 'entity_type' => 'setting'],
             ['name' => 'create', 'title' => 'Create settings', 'entity_type' => 'setting'],
